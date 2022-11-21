@@ -1,4 +1,7 @@
 library(tidyverse)
+library("tidyverse")
+library("stringr")
+library("ggplot2")
 
 # Data access ----
 #---------------------------------------------------------------------------#
@@ -168,3 +171,4 @@ get_basic_info <- function(df) {
 # 
 # ## 
 # states_with_no_jail_pop()
+

@@ -1,7 +1,7 @@
 ---
-title: "Your A4 Report Title (TODO: Revise title)"
-author: "Your Name"
-date: '2022-11-01'
+title: "Incarceration Trends within the United States in the past 5 Decades"
+author: "Pratham Kataria"
+date: '2022-11-21'
 output: html_document
 ---
 
@@ -11,7 +11,7 @@ source("../source/analysis.R")
 ```
 
 ## Abstract 
-[TODO: Include a short abstract (about 50 words)]
+The rate of incarceration has increased significantly over the past five decades. This article aims to discover any inequalities present (such as race and sex based discrimination) in the jailing system and how they have progressed over time. Charts will be presented to make it easy to understand the disparities. 
 
 # Test (TODO: Remove before submission!!)
 ```{r echo=FALSE}
@@ -34,12 +34,30 @@ print(sum)
 ```
 
 ## Introduction 
+This article aims to look into disparities in jails across the US. The data used in this study is gathered by the _**Vera Institute of Justice**_, a reputable nonprofit organization aimed to find injustices through research and collecting data. The data includes information regarding incarceration since 1970 (until 2018) and includes variables such as state, county, and the breakdown of types of people incarcerated _(including race and sex)_. 
 
+This data not affects the individuals who are incarcerated _(direct stakeholders)_, but also people all across the United States as it shows how the jailing system can potentially target different types of people. People living in areas with higher disparities need to be aware of it, especially if they belong to groups that are being incarcerated at a higher rate _(indirect stakeholders)_. Let's take a deeper look into the data to see where these disparities are occurring.
 
 ## Data Summary 
-[TODO]
+I decided to look at how the total male jail population compared to female population in order to see how the highest numbers compared with each other. I was also curious to see how the highest juvenile population compared to the total and if it was a significant value based on the total. There are three different variables created (male_jail_pop_2018, male_juvenile_jail_pop_2018, and female_jail_pop_2018) which represent the values mentioned above.
 
-[TODO ... other sections ... See Canvas for details]
+The highest number of incarcerated men **(`male_jail_pop_2018`)** is significantly higher than the highest number of incarcerated women **(`female_jail_pop_2018`)**. Although the highest number of juvenile men is relevant **(`male_juvenile_jail_pop_2018`)**, it is not a huge proportion of the highest male jail population **(`male_jail_pop_2018`)**.  
+
+`plot_jail_pop_for_us()`
+
+This graphs helps us answer the question: **What trends are we seeing in terms of the number of people incarcerated within the US over the past 5 decades?** We can see that the total number of incarcerated individuals in the United States has increased significantly since the 1970s. The population seemed to have grown in the 70s and slightly decreased in the 80s. However, it picked up rapidly since the 90s and the value has stabilized within the last 5 or so years.
+
+`plot_jail_pop_by_states()`
+
+This graphs helps us answer the question: **What trends are we seeing in terms of the number of people incarcerated in US states the past 5 decades?**
+
+`plot_ail_prop_by_sex()`
+
+This graphs helps us answer the question: **Are we seeing any inequalities in terms of the proportion of males being incarcerated compared to females in 2018?** We can clearly see that in most cases, the proportion of males being incarcerated seems to be higher than the number of females. This shows that there does, in fact, seem to be a difference. However, this data is based on a few assumptions such as males and females are involved in criminal activity at the same rate.
+
+`plot_prop_black_jail_state_2018()`
+
+This graphs helps us answer the question: **Are we seeing any inequalities in terms of the proportion of blacks being incarcerated by state recently? In other words, what trends are we seeing in terms of the number of black people incarcerated in US states in 2018?**
 
 _All the very best with your work!_
 

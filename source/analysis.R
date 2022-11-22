@@ -48,8 +48,8 @@ female_jail_pop_2018 <- df %>%
 
 # I decided to look at how the total male jail population compared to female population.
 # I wanted to see how the highest number compared with each other.
-# I was also curious to see how the highest juvenile population compared to the total and see
-# how it compared to the total.
+# I was also curious to see how the highest juvenile population compared to the total
+# and if it was a significant value based on the total.
 # There are three different variables created (male_jail_pop_2018, male_juvenile_jail_pop_2018, and female_jail_pop_2018)
 # which represent the values mentioned above.
 
@@ -57,8 +57,6 @@ female_jail_pop_2018 <- df %>%
 ## Section 3  ---- 
 #----------------------------------------------------------------------------#
 # Growth of the U.S. Prison Population
-# Your functions might go here ... <todo:  update comment>
-#----------------------------------------------------------------------------#
 # This function creates a data frame that helps look into the U.S prison population
 # It is derived from the original data frame from the Vera Institute
 # This data frame is grouped by year and then the sum of total jail population is found for each year
@@ -91,6 +89,8 @@ plot_jail_pop_for_us()
 # significantly since the 1970s. The population seemed to have grown in the 70s and slightly decreased in the 80s.
 # However, it picked up rapidly since the 90s and the value has stabalized within the last 5 or so years.
 
+#----------------------------------------------------------------------------#
+
 ## Section 4  ---- 
 #----------------------------------------------------------------------------#
 # Growth of Prison Population by State 
@@ -102,14 +102,14 @@ plot_jail_pop_for_us()
 # The function returns the adjusted data frame
 get_jail_pop_by_states <- function(states) {
   get_jail_pop_by_states_df <- df %>%
+#    filter(str_contains(state, states, logic = "or")) %>%
+    filter(state == "AL") %>%
     group_by(state) %>%
-    for (ind_state in states) {
-      filter(str_detect(state, ind_state)) %>%
-    }
-    summarise(year_jail_population = sum(total_jail_pop, na.rm = TRUE))
+    summarise(jail_pop_by_states = sum(total_jail_pop, na.rm = TRUE)) %>%
   return(get_year_jail_pop_df)  
   
 }
+
 
 # This function plots the state and jail population for each year in a line graph
 # It will create a different line (with a different color) for each state passed in the parameter
@@ -118,8 +118,8 @@ get_jail_pop_by_states <- function(states) {
 # using ggplot functions
 # The function returns the graph made
 plot_jail_pop_by_states <- function(states) {
-  plot_graph <- ggplot(data=get_jail_pop_by_states()) + 
-    geom_line(mapping = aes(x=year, y=year_jail_population, color = state)) +
+  plot_graph <- ggplot(data=get_jail_pop_by_states(states)) + 
+    geom_line(mapping = aes(x=year, y=jail_pop_by_states, color = state)) +
     labs(title = "Growth of Prison Population by State (1970-2018)", x = "Year", y = "Jail Population",
          caption = "This graph shows trend in jail population from 1970 to 2018 for each state passed in the vector")
   return(plot_graph)
@@ -127,7 +127,7 @@ plot_jail_pop_by_states <- function(states) {
 }
 
 # Graph is plotted
-plot_jail_pop_by_states()
+plot_jail_pop_by_states(c("WA", "OR", "CA"))
 
 # Summary Paragraph: This graphs helps us answer the question:
 # What trends are we seeing in terms of the number of people incarcerated in US states the past 5 decades?
@@ -151,12 +151,13 @@ get_jail_prop_by_sex <- function() {
   
 }
 
+
 # This function plots the proportion of males incarcerated by county population
 # to proportion of females incarcerated by county population in a scatter plot
 # It takes the data frame created in the get_jail_prop_by_sex function and makes a plot
 # using ggplot functions
 # The function returns the graph made
-plot_jail_pop_by_states <- function() {
+plot_ail_prop_by_sex <- function() {
   plot_graph <- ggplot(data=get_jail_prop_by_sex()) + 
     geom_point(mapping = aes(x=jail_prop_male, y=jail_prop_female)) +
     labs(title = "Proportion of Males Incarcerated vs Females by County (2018)", x = "Proportion of Males Incarcerated", y = "Proportion of Females Incarcerated",
@@ -166,7 +167,7 @@ plot_jail_pop_by_states <- function() {
 }
 
 # Graph is plotted
-plot_jail_pop_by_states()
+plot_ail_prop_by_sex()
 
 # Summary Paragraph: This graphs helps us answer the question:
 # Are we seeing any inequalities in terms of the proportion of males being incarcerated compared to females in 2018?
@@ -191,7 +192,7 @@ get_prop_black_jail_state_2018 <- function() {
   get_prop_black_jail_state_2018_df <- df %>%
     filter(year == 2018) %>%
     group_by(state) %>%
-    summarise(prop_black_jail_state_2018 = black_jail_pop / black_pop_15to64) %>%
+    summarise(prop_black_jail_state_2018 = sum(black_jail_pop, na.rm = TRUE) / sum(black_pop_15to64, na.rm = TRUE)) %>%
   return(get_prop_black_jail_state_2018_df)   
 }
 
@@ -200,13 +201,13 @@ get_prop_black_jail_state_2018 <- function() {
 # using ggplot functions
 # The function returns the graph made
 plot_prop_black_jail_state_2018 <- function()  {
-  plot_graph <- plot_usmap(data = get_prop_black_jail_state_2018(), values = prop_black_jail_state_2018, color = "blue") + 
+  plot_graph <- plot_usmap(data = get_prop_black_jail_state_2018(), values = "prop_black_jail_state_2018", color = "blue") + 
     scale_fill_continuous(
-      low = "white", high = "blue", name = "Proportion of incarcerated Blacks", label = scales::comma) +
-    labs(title = "Proportion of incarcerated Blacks by State (2018)",
+      low = "white", high = "blue", name = "Proportion of Incarcerated Blacks", label = scales::comma) +
+    labs(title = "Proportion of Incarcerated Blacks by State (2018)",
          caption = "This graph shows the proportion of incarcerated Blacks by state in 2018") +
-    theme_minimal()
-#    theme(legend.position = "right")
+#    theme_minimal()
+    theme(legend.position = "right")
 return(plot_graph)
 }
 

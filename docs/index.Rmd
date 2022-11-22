@@ -57,7 +57,7 @@ This graphs helps us answer the question: **Are we seeing any inequalities in te
 
 `plot_prop_black_jail_state_2018()`
 
-This graphs helps us answer the question: **Are we seeing any inequalities in terms of the proportion of blacks being incarcerated by state recently? In other words, what trends are we seeing in terms of the number of black people incarcerated in US states in 2018?**
+This graphs helps us answer the question: **Are we seeing any inequalities in terms of the proportion of blacks being incarcerated by state recently? In other words, what trends are we seeing in terms of the number of black people incarcerated in US states in 2018?** This graph shows that there is a disparity between states in terms of number of black individuals being incarcerated. We can see that Wyoming is incarcerating more Black individuals compared to other states. Montana, Louisiana, Kentucky, and West Virginia seem to be high as well.
 
 _All the very best with your work!_
 

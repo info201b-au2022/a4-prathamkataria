@@ -103,13 +103,12 @@ plot_jail_pop_for_us()
 get_jail_pop_by_states <- function(states) {
   get_jail_pop_by_states_df <- df %>%
 #    filter(str_contains(state, states, logic = "or")) %>%
-    filter(state == "AL") %>%
-    group_by(state) %>%
+    filter(state == states) %>%
+    group_by(year, state) %>%
     summarise(jail_pop_by_states = sum(total_jail_pop, na.rm = TRUE)) %>%
   return(get_year_jail_pop_df)  
   
 }
-
 
 # This function plots the state and jail population for each year in a line graph
 # It will create a different line (with a different color) for each state passed in the parameter
@@ -118,13 +117,15 @@ get_jail_pop_by_states <- function(states) {
 # using ggplot functions
 # The function returns the graph made
 plot_jail_pop_by_states <- function(states) {
-  plot_graph <- ggplot(data=get_jail_pop_by_states(states)) + 
-    geom_line(mapping = aes(x=year, y=jail_pop_by_states, color = state)) +
+  plot_graph <- ggplot(data = get_jail_pop_by_states(states), aes(x = year, y = jail_pop_by_states, color = state)) + 
+    geom_line() +
+    geom_point() +
     labs(title = "Growth of Prison Population by State (1970-2018)", x = "Year", y = "Jail Population",
          caption = "This graph shows trend in jail population from 1970 to 2018 for each state passed in the vector")
   return(plot_graph)
-  
 }
+
+data <- get_jail_pop_by_states(c("WA", "OR", "CA"))
 
 # Graph is plotted
 plot_jail_pop_by_states(c("WA", "OR", "CA"))
@@ -217,6 +218,9 @@ plot_prop_black_jail_state_2018()
 # Summary Paragraph: This graphs helps us answer the question:
 # Are we seeing any inequalities in terms of the proportion of blacks being incarcerated by state recently?
 # In other words, what trends are we seeing in terms of the number of black people incarcerated in US states in 2018?
+# This graph shows that there is a disparity between states in terms of number of black individuals being incarcerated.
+# We can see that Wyoming is incarcerating more Black individuals compared to other states.
+# Montana, Louisiana, Kentucky, and West Virginia seem to be high as well.
 
 
 #----------------------------------------------------------------------------#

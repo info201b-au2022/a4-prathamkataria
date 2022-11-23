@@ -31,7 +31,7 @@ plot_jail_pop_for_us()
 This graphs helps us answer the question: **What trends are we seeing in terms of the number of people incarcerated within the US over the past 5 decades?** We can see that the total number of incarcerated individuals in the United States has increased significantly since the 1970s. The population seemed to have grown in the 70s and slightly decreased in the 80s. However, it picked up rapidly since the 90s and the value has stabilized within the last 5 or so years.
 
 ```{r echo=FALSE}
-plot_jail_pop_by_states()
+plot_jail_pop_by_states(c("WA", "OR", "CA"))
 ```
 
 This graphs helps us answer the question: **What trends are we seeing in terms of the number of people incarcerated in US states the past 5 decades?** # It seems states relatively follow the same trend as the US: Increase in the 70s, slight decrease in the 80s rapid growth until stable level in 2010s. However, it is important to note that states with a higher population showed this tend at a more extreme level compared to states with a smaller population.

@@ -132,6 +132,9 @@ plot_jail_pop_by_states(c("WA", "OR", "CA"))
 
 # Summary Paragraph: This graphs helps us answer the question:
 # What trends are we seeing in terms of the number of people incarcerated in US states the past 5 decades?
+# It seems states relatively follow the same trend as the US: Increase in the 70s, slight decrease in the 80s
+# rapid growth until stable level in 2010s. However, it is important to note that states with a higher population
+# showed this tend at a more extreme level compared to states with a smaller population. 
 
 
 ## Section 5  ---- 

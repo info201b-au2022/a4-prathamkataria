@@ -360,6 +360,14 @@ States in the past 5 Decades</h1>
 
 <pre><code>## Warning in scan(file = file, what = what, sep = sep, quote = quote, dec = dec, :
 ## embedded nul(s) found in input</code></pre>
+<pre><code>## Warning in `==.default`(state, states): longer object length is not a multiple
+## of shorter object length</code></pre>
+<pre><code>## Warning in is.na(e1) | is.na(e2): longer object length is not a multiple of
+## shorter object length</code></pre>
+<pre><code>## Warning in `==.default`(state, states): longer object length is not a multiple
+## of shorter object length</code></pre>
+<pre><code>## Warning in is.na(e1) | is.na(e2): longer object length is not a multiple of
+## shorter object length</code></pre>
 <div id="abstract" class="section level2">
 <h2>Abstract</h2>
 <p>The rate of incarceration has increased significantly over the past
@@ -431,7 +439,11 @@ years.</p>
 <p><code>plot_jail_pop_by_states()</code></p>
 <p>This graphs helps us answer the question: <strong>What trends are we
 seeing in terms of the number of people incarcerated in US states the
-past 5 decades?</strong></p>
+past 5 decades?</strong> # It seems states relatively follow the same
+trend as the US: Increase in the 70s, slight decrease in the 80s rapid
+growth until stable level in 2010s. However, it is important to note
+that states with a higher population showed this tend at a more extreme
+level compared to states with a smaller population.</p>
 <p><code>plot_ail_prop_by_sex()</code></p>
 <p>This graphs helps us answer the question: <strong>Are we seeing any
 inequalities in terms of the proportion of males being incarcerated
